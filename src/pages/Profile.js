@@ -94,7 +94,7 @@ export default function InputAdornments() {
       graduation_year: userProfile.graduation_year,
       classification: userProfile.classification,
       age: parseInt(userProfile.age),
-      point: parseInt(userProfile.point),
+      // point: parseInt(userProfile.point),
       displayName: userProfile.displayName,
       expiretime: userProfile.account_expiretime,
       linkedin_link: userProfile.linkedin_link,
@@ -139,7 +139,7 @@ export default function InputAdornments() {
           <h3 style={{ textAlign: "center", marginBottom: "20px" }}>
             Your profile
           </h3>
-          <div>
+          {/* <div>
             Committees:
             {userProfile.committees
               ? userProfile.committees.split("; ").map((item) => (
@@ -148,7 +148,7 @@ export default function InputAdornments() {
                   </Label>
                 ))
               : " No committee"}
-          </div>
+          </div> */}
           <Grid cointainer spacing={3}>
             <Grid container item>
               <TextField
@@ -162,7 +162,7 @@ export default function InputAdornments() {
                 variant="outlined"
               />
 
-              <TextField
+              {/* <TextField
                 label="Point"
                 autoFocus
                 id="filled-start-adornment v"
@@ -171,7 +171,7 @@ export default function InputAdornments() {
                 className={clsx(classes.margin, classes.textField)}
                 {...getFieldProps("point")}
                 variant="outlined"
-              />
+              /> */}
             </Grid>
             <Grid container item>
               <TextField
@@ -188,7 +188,7 @@ export default function InputAdornments() {
                 className={clsx(classes.margin, classes.textField)}
                 error={Boolean(touched.email && errors.email)}
               />
-              <TextField
+              {/* <TextField
                 required
                 autoFocus
                 margin="dense"
@@ -201,7 +201,7 @@ export default function InputAdornments() {
                 {...getFieldProps("cougarEmail")}
                 className={clsx(classes.margin, classes.textField)}
                 error={Boolean(touched.cougarEmail && errors.cougarEmail)}
-              />
+              /> */}
             </Grid>
             <Grid item>
               <TextField
@@ -226,7 +226,7 @@ export default function InputAdornments() {
                 variant="outlined"
               />
 
-              <TextField
+              {/* <TextField
                 required
                 label="Student ID"
                 id="filled-start-adornment g"
@@ -234,8 +234,8 @@ export default function InputAdornments() {
                 {...getFieldProps("psid")}
                 error={Boolean(touched.psid && errors.psid)}
                 variant="outlined"
-              />
-              <FormControl className={clsx(classes.margin, classes.textField)}>
+              /> */}
+              {/* <FormControl className={clsx(classes.margin, classes.textField)}>
                 <InputLabel htmlFor="outlined-age-native-simple">
                   Classification
                 </InputLabel>
@@ -300,9 +300,9 @@ export default function InputAdornments() {
                   <MenuItem value={"2029"}>2029</MenuItem>
                   <MenuItem value={"2030"}>2030</MenuItem>
                 </Select>
-              </FormControl>
+              </FormControl> */}
 
-              <TextField
+              {/* <TextField
                 autoFocus
                 label="Linkedin"
                 id="filled-start-adornment l"
@@ -348,7 +348,7 @@ export default function InputAdornments() {
                 {...getFieldProps("updated_time")}
                 variant="outlined"
                 disabled
-              />
+              /> */}
             </Grid>
 
             {/* <CommitteeField selected={selected} setSelected={setSelected} /> */}
