@@ -35,8 +35,9 @@ const RootStyle = styled("div")(({ theme }) => ({
 
 const AccountStyle = styled("div")(({ theme }) => ({
   display: "flex",
+  position: "relative",
   alignItems: "center",
-  padding: theme.spacing(2, 2.5),
+  padding: theme.spacing(2, 2),
   borderRadius: theme.shape.borderRadiusSm,
   backgroundColor: theme.palette.grey[200],
 }));
@@ -77,14 +78,14 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         },
       }}
     >
-      <Box style={{alignSelf: 'center'}}>
+      <Box style={{alignSelf: 'auto'}}>
         <Box component={RouterLink} to="/">
           <Logo />
         </Box>
       </Box>
 
-      <Box sx={{ mb: 5, mx: 2.5 }}>
-        <Link underline="none" component={RouterLink} to="#">
+      <Box sx={{ mb: 30, mx: 2.5 }}>
+        {/* <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
             <Avatar src={account.photoURL} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
@@ -96,7 +97,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
               </Typography>
             </Box>
           </AccountStyle>
-        </Link>
+        </Link> */}
       </Box>
 
       <NavSection navConfig={sidebarConfig} adminConfig={adminConfig} />
