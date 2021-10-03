@@ -8,7 +8,7 @@ import {
   getLinkedinSignup,
   getInterviewSignup,
 } from "src/mysql_db_api/members";
-import { MemberEventTab } from ".";
+// import { MemberEventTab } from ".";
 // ----------------------------------------------------------------------
 
 // const SORT_OPTIONS = [
@@ -103,7 +103,7 @@ export default function Blog() {
   }, []);
   return (
     <Container>
-      <div style={{ marginTop: "20px" }}>
+      {/* <div style={{ marginTop: "20px" }}>
         <h3 style={{ paddingBottom: "17px" }}>
           My Attended Events: {memberEvents.length}
         </h3>
@@ -120,7 +120,7 @@ export default function Blog() {
             ))}
           </Grid>
         )}
-      </div>
+      </div> */}
     </Container>
   );
 }
