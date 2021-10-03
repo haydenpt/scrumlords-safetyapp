@@ -12,6 +12,7 @@ import {
   IconButton,
   Typography,
   OutlinedInput,
+  Button,
   InputAdornment,
 } from "@material-ui/core";
 import CsvFileExport from "src/components/CsvFileExport";
@@ -53,6 +54,10 @@ export default function MemberTableTooBar({
   data,
   fileName,
 }) {
+  const url = "http://localhost:3000";
+  const gotoReportPage = () => {
+    window.open(`${url}/dashboard/incident`, "_blank");
+  };
   return (
     <RootStyle
       sx={{
@@ -70,7 +75,7 @@ export default function MemberTableTooBar({
         <SearchStyle
           value={filterName}
           onChange={onFilterName}
-          placeholder="Search member (psid) ..."
+          placeholder="Search ..."
           startAdornment={
             <InputAdornment position="start">
               <Box
@@ -90,7 +95,16 @@ export default function MemberTableTooBar({
           </IconButton>
         </Tooltip>
       )} */}
-      <CsvFileExport data={data} fileName={fileName} />
+      <div>
+        <Button
+          variant="contained"
+          style={{ marginLeft: "5px" }}
+          onClick={gotoReportPage}
+        >
+          Add New Incident
+        </Button>
+        <CsvFileExport data={data} fileName={fileName} />
+      </div>
     </RootStyle>
   );
 }

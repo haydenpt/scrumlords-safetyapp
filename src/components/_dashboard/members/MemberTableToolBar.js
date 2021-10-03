@@ -67,7 +67,7 @@ export default function MemberTableTooBar({
         <SearchStyle
           value={filterName}
           onChange={onFilterName}
-          placeholder="Search member (psid) ..."
+          placeholder="Search ..."
           startAdornment={
             <InputAdornment position="start">
               <Box
@@ -80,8 +80,7 @@ export default function MemberTableTooBar({
         />
       )}
 
-      {numSelected > 0 ? // </Tooltip> //   </IconButton> //     <Icon icon={trash2Fill} /> //   <IconButton> // <Tooltip title="Delete">
-      null : (
+      {numSelected > 0 ? null : ( // </Tooltip> //   </IconButton> //     <Icon icon={trash2Fill} /> //   <IconButton> // <Tooltip title="Delete">
         <Tooltip title="Filter list">
           <IconButton>
             <Icon icon={roundFilterList} />

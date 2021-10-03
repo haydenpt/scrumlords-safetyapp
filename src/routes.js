@@ -23,6 +23,7 @@ import Inspection from "src/pages/Inspection";
 // import AdminEvents from "./pages/AdminEvents";
 // import { Attended_events } from "./components/_dashboard/profile";
 import Incident from "./pages/Incident";
+import IncidentHome from "./pages/IncidentHome";
 
 export default function Router() {
   return useRoutes([
@@ -56,6 +57,15 @@ export default function Router() {
           element: (
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          ),
+        },
+
+        {
+          path: "incident_home",
+          element: (
+            <PrivateRoute>
+              <IncidentHome />
             </PrivateRoute>
           ),
         },
