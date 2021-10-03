@@ -2,13 +2,14 @@ import React from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import DatePicker from 'src/components/calendar/DatePicker.js'
+import DatePicker from 'src/components/calendar/DatePicker.js';
+import '../style.css';
 
 export default function Incident() {
   return (
   <div>
 
-    <h1>Incident Report</h1>
+    <h1 class="heading">Incident Report</h1>
     
     <Box
       component="form"
@@ -77,17 +78,7 @@ export default function Incident() {
           />
         </p>
         <div>
-          Incident Date
           <DatePicker 
-            required
-            id="outlined-required"
-            label="Incident Date"
-          />
-          Date Reported
-          <DatePicker
-            required
-            id="outlined-required"
-            label="Date Reported"
           />
         </div>
         <TextField

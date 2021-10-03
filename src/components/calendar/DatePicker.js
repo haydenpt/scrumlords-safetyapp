@@ -18,7 +18,23 @@ export default function DatePicker() {
           }}
           renderInput={(startProps) => (
             <React.Fragment>
-              <TextField {...startProps} />
+            <div>
+            <p>
+                <h4>Incident Date</h4>
+            </p>
+              <TextField  {...startProps} 
+                style ={{width: '80%'}}
+                required
+                id="outlined-required"/>
+            <p>
+                <h4>Date Reported</h4>
+            </p>
+              <TextField  {...startProps} 
+                style ={{width: '80%'}}
+                required
+                id="outlined-required"
+                label="Incident Date"/>
+            </div>
             </React.Fragment>
           )}
         />
