@@ -2,16 +2,19 @@ import React from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import DatePicker from 'src/components/calendar/DatePicker.js';
+import '../style.css';
 
 export default function Incident() {
   return (
   <div>
 
-    <h1>Incident Report</h1>
+    <h1 class="heading">Incident Report</h1>
+    
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 0.75, },
+        '& .MuiTextField-root': { m: 0.75 },
       }}
       noValidate
       autoComplete="off"
@@ -59,14 +62,8 @@ export default function Incident() {
           <TextField
             required
             id="outlined-required"
-            label="Incident Date"
-            style ={{width: '40%'}}
-          />
-          <TextField
-            required
-            id="outlined-required"
-            label="Date Reported"
-            style ={{width: '40%'}}
+            label="Incident Location"
+            style ={{width: '81%'}}
           />
         </p>
         <p>
@@ -80,16 +77,23 @@ export default function Incident() {
             label="Incident Description"
           />
         </p>
+        <div>
+          <DatePicker 
+          />
+        </div>
         <TextField
             required
             id="outlined-required"
             label="Attachments"
-            style ={{width: '40%'}}
+            style ={{width: '81%'}}
           />
-          <p>
-            <Button variant="text">Browse File</Button>
-            <Button variant="contained">Upload</Button>
-          </p>
+          <span style ={{ position:'relative', top: '1.5ch'}}>
+            <Button variant="text" style ={{ position:'absolute', width: '100%', left: '-18ch'}}>Browse</Button>
+            <Button variant="outlined" style ={{ position:'absolute', width: '100%', left: '-10ch'}}>Upload</Button>
+          </span>
+          <div style ={{ position:'relative', top: '15px'}}>
+            <Button variant="contained" style ={{ width: '81%', height: '4ch', fontSize: 'large'}}>Submit</Button>
+          </div>
 
       </div>
     </Box>
