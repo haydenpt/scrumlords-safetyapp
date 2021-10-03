@@ -63,10 +63,6 @@ export default function Login() {
                 <td><img src="/static/illustrations/hcss.jpg" width="90%"/></td>
                 </center>
               </tr>
-              <br/>
-              <tr>
-                <center><td>2021 CodeRed Hackathon</td></center>
-              </tr>
             </table>
             
         </ContentStyle>
