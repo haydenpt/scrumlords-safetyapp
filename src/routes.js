@@ -35,7 +35,6 @@ export default function Router() {
         </PrivateRoute>
       ),
       children: [
-        { path: "/", element: <Navigate to="/dashboard/app" replace /> },
         {
           path: "app",
           element: (
@@ -56,7 +55,7 @@ export default function Router() {
           path: "profile",
           element: (
             <PrivateRoute>
-              <Profile />
+              <Incident />
             </PrivateRoute>
           ),
         },
@@ -98,7 +97,6 @@ export default function Router() {
     },
     {
       path: "/",
-      element: <LogoOnlyLayout />,
       children: [
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },

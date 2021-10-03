@@ -26,18 +26,19 @@ export const sidebarConfig = [
   // },
 
   {
-    title: "Incident home page",
+    title: "Incident",
+    path: "/dashboard/incident",
+    isAdmin: false,
+    icon: getIcon(calendar2EventFill),
+  },
+
+  {
+    title: "Incident Dashboard",
     path: "/dashboard/incident_home",
     isAdmin: false,
     icon: getIcon(pieChart2Fill),
   },
 
-  {
-    title: "Profile",
-    path: "/dashboard/profile",
-    isAdmin: false,
-    icon: getIcon(personAddFill),
-  },
 
   // {
   //   title: "Not found",

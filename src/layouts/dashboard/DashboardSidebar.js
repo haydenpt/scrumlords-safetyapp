@@ -24,7 +24,7 @@ import { useAuth } from "src/authentication/AuthContext";
 
 // ----------------------------------------------------------------------
 
-const DRAWER_WIDTH = 280;
+const DRAWER_WIDTH = 300;
 
 const RootStyle = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
@@ -77,7 +77,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         },
       }}
     >
-      <Box sx={{ px: 2.5, py: 3 }}>
+      <Box style={{alignSelf: 'center'}}>
         <Box component={RouterLink} to="/">
           <Logo />
         </Box>
@@ -164,7 +164,8 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           PaperProps={{
             sx: {
               width: DRAWER_WIDTH,
-              bgcolor: "background.default",
+              bgcolor: "#D3EAFF",
+              
             },
           }}
         >

@@ -64,20 +64,22 @@ export default function LoginForm() {
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
           <TextField
+            focused 
             fullWidth
             autoComplete="username"
             type="email"
-            label="Email address"
+            placeholder="Email address"
             {...getFieldProps("email")}
             error={Boolean(touched.email && errors.email)}
             helperText={touched.email && errors.email}
           />
 
           <TextField
+            focused
             fullWidth
             autoComplete="current-password"
             type={showPassword ? "text" : "password"}
-            label="Password"
+            placeholder="Password"
             {...getFieldProps("password")}
             InputProps={{
               endAdornment: (

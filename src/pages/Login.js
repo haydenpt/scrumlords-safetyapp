@@ -1,15 +1,11 @@
-import { Link as RouterLink } from "react-router-dom";
 // material
 import { experimentalStyled as styled } from "@material-ui/core/styles";
-import { Card, Stack, Link, Container, Typography } from "@material-ui/core";
+import { Card, Stack, Container, Typography } from "@material-ui/core";
 // layouts
-import AuthLayout from "../layouts/AuthLayout";
 // components
 import Page from "../components/Page";
-import { MHidden } from "../components/@material-extend";
 import { LoginForm } from "../components/authentication/login";
-// import AuthSocial from "../components/authentication/AuthSocial";
-
+import Logo from "src/components/Logo";
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
@@ -18,78 +14,61 @@ const RootStyle = styled(Page)(({ theme }) => ({
   },
 }));
 
-const SectionStyle = styled(Card)(({ theme }) => ({
-  width: "100%",
-  maxWidth: 464,
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  margin: theme.spacing(2, 0, 2, 2),
-}));
-
 const ContentStyle = styled("div")(({ theme }) => ({
-  maxWidth: 480,
+  maxWidth: 500,
   margin: "auto",
   display: "flex",
   minHeight: "100vh",
   flexDirection: "column",
   justifyContent: "center",
-  padding: theme.spacing(12, 0),
+  padding: theme.spacing(10, 3),
+  color: "#ffffff",
+  backgroundColor: "#000000",
+  opacity: "89%"
 }));
 
 // ----------------------------------------------------------------------
 
 export default function Login() {
   return (
-    <RootStyle title="Login | Minimal-UI">
-      <AuthLayout>
-        Don’t have an account? &nbsp;
-        <Link
-          underline="none"
-          variant="subtitle2"
-          component={RouterLink}
-          to="/register"
-        >
-          Get started
-        </Link>
-      </AuthLayout>
-
-      <MHidden width="mdDown">
-        <SectionStyle>
-          <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-            Hi, Welcome Back
-          </Typography>
-          <img src="/static/illustrations/illustration_login.png" alt="login" />
-        </SectionStyle>
-      </MHidden>
-
-      <Container maxWidth="sm">
+    <RootStyle title="Login | Scrumlords"
+    style ={{ 
+      backgroundImage: "url('/static/illustrations/bg.jpg')",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      backgroundAttachment: "fixed",
+      backgroundPosition: "center center",}}>
+      
+      <Container>
         <ContentStyle>
-          <Stack sx={{ mb: 5 }}>
+          <Logo class="logo" />
+          <Stack sx={{ mb: 3 }} >
             <Typography variant="h4" gutterBottom>
-              Sign in to MISSO Member App
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-              Enter your details below.
+            <br /><br /><br />
+              <center>Sign in to <span style={{color: "#52D9FF"}}>Safety App</span></center>
             </Typography>
           </Stack>
           {/* <AuthSocial /> */}
-
           <LoginForm />
 
-          <MHidden width="ixlUp">
-            <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-              Being first-time user or don't know how to login?&nbsp;
-              <Link
-                variant="subtitle2"
-                href="https://www.youtube.com/watch?v=3xne1grF1V8&ab_channel=MISSOJavaEducation"
-                target="_blank"
-                rel="noopener"
-              >
-                Get started
-              </Link>
+            <Typography gutterBottom>
+              <br /><br />
+              <center>Sponsored by</center>
             </Typography>
-          </MHidden>
+            <table>
+              <tr>
+                <center>
+                <td><img src="/static/illustrations/conoco.jpg" width="90%"/></td>
+                <td></td>
+                <td><img src="/static/illustrations/hcss.jpg" width="90%"/></td>
+                </center>
+              </tr>
+              <br/>
+              <tr>
+                <center><td>2021 CodeRed Hackathon</td></center>
+              </tr>
+            </table>
+            
         </ContentStyle>
       </Container>
     </RootStyle>

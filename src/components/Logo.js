@@ -12,8 +12,13 @@ export default function Logo({ sx }) {
   return (
     <Box
       component="img"
-      src="/static/Logo.png"
-      sx={{ width: 100, height: 80, ...sx }}
+      src="/static/logo-png.png"
+      sx={{ width: '30ch', height: '28ch', ...sx }}
+      style={{
+        position: "absolute",
+        bottom: "70%",
+        alignSelf: "center"
+      }}
     />
   );
 }

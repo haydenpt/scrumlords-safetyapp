@@ -1,7 +1,17 @@
 .heading {
-    padding: 1ch;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    padding-bottom: 1ch;
     border-radius: 25px;
-    background: hsl(0, 100%, 50%); 
     width: 81%;
+}
+
+.login {
+    color: white;
+    background-color: white;
+}
+
+.sponsor {
+    border-radius: 15px;
+    background: #ffffff;
+    ;
+
 }
