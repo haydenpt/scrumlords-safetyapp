@@ -50,6 +50,7 @@
     "@material-ui/pickers": "^3.3.10",
     "@material-ui/styles": "^4.11.4",
     "@material-ui/utils": "^5.0.0-alpha.36",
+    "@mui/icons-material": "^5.0.1",
     "@mui/material": "^5.0.2",
     "@testing-library/jest-dom": "^5.14.1",
     "apexcharts": "^3.27.1",
