@@ -59,6 +59,14 @@ export default function Incident() {
         </p>
         <p>
           <TextField
+            required
+            id="outlined-required"
+            label="Incident Location"
+            style ={{width: '81%'}}
+          />
+        </p>
+        <p>
+          <TextField
             multiline
             required
             id="outlined-required"
@@ -68,9 +76,9 @@ export default function Incident() {
             label="Incident Description"
           />
         </p>
-        <p>
+        <div>
           Incident Date
-          <DatePicker
+          <DatePicker 
             required
             id="outlined-required"
             label="Incident Date"
@@ -81,19 +89,19 @@ export default function Incident() {
             id="outlined-required"
             label="Date Reported"
           />
-        </p>
+        </div>
         <TextField
             required
             id="outlined-required"
             label="Attachments"
             style ={{width: '21%'}}
           />
-          <span style ={{ position:'relative', top: '15px'}}>
+          <span style ={{ position:'relative', top: '1.5ch'}}>
             <Button variant="text">Browse File</Button>
             <Button variant="outlined">Upload</Button>
           </span>
           <div style ={{ position:'relative', top: '15px'}}>
-            <Button variant="contained" style ={{ width: '81%'}}>Submit</Button>
+            <Button variant="contained" style ={{ width: '81%', height: '4ch', fontSize: 'large'}}>Submit</Button>
           </div>
 
       </div>
