@@ -2,16 +2,18 @@ import React from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import DatePicker from 'src/components/calendar/DatePicker.js'
 
 export default function Incident() {
   return (
   <div>
 
     <h1>Incident Report</h1>
+    
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 0.75, },
+        '& .MuiTextField-root': { m: 0.75 },
       }}
       noValidate
       autoComplete="off"
@@ -57,20 +59,6 @@ export default function Incident() {
         </p>
         <p>
           <TextField
-            required
-            id="outlined-required"
-            label="Incident Date"
-            style ={{width: '40%'}}
-          />
-          <TextField
-            required
-            id="outlined-required"
-            label="Date Reported"
-            style ={{width: '40%'}}
-          />
-        </p>
-        <p>
-          <TextField
             multiline
             required
             id="outlined-required"
@@ -80,16 +68,33 @@ export default function Incident() {
             label="Incident Description"
           />
         </p>
+        <p>
+          Incident Date
+          <DatePicker
+            required
+            id="outlined-required"
+            label="Incident Date"
+          />
+          Date Reported
+          <DatePicker
+            required
+            id="outlined-required"
+            label="Date Reported"
+          />
+        </p>
         <TextField
             required
             id="outlined-required"
             label="Attachments"
-            style ={{width: '40%'}}
+            style ={{width: '21%'}}
           />
-          <p>
+          <span style ={{ position:'relative', top: '15px'}}>
             <Button variant="text">Browse File</Button>
-            <Button variant="contained">Upload</Button>
-          </p>
+            <Button variant="outlined">Upload</Button>
+          </span>
+          <div style ={{ position:'relative', top: '15px'}}>
+            <Button variant="contained" style ={{ width: '81%'}}>Submit</Button>
+          </div>
 
       </div>
     </Box>
