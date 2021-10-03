@@ -32,6 +32,13 @@ export const sidebarConfig = [
     icon: getIcon(personAddFill),
   },
 
+  {
+    title: "Incident home page",
+    path: "/dashboard/incident_home",
+    isAdmin: false,
+    icon: getIcon(personAddFill),
+  },
+
   // {
   //   title: "Not found",
   //   path: "/404",
