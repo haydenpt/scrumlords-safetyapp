@@ -94,11 +94,11 @@ export default function Incident() {
             required
             id="outlined-required"
             label="Attachments"
-            style ={{width: '21%'}}
+            style ={{width: '81%'}}
           />
           <span style ={{ position:'relative', top: '1.5ch'}}>
-            <Button variant="text">Browse File</Button>
-            <Button variant="outlined">Upload</Button>
+            <Button variant="text" style ={{ position:'absolute', width: '100%', left: '-18ch'}}>Browse</Button>
+            <Button variant="outlined" style ={{ position:'absolute', width: '100%', left: '-10ch'}}>Upload</Button>
           </span>
           <div style ={{ position:'relative', top: '15px'}}>
             <Button variant="contained" style ={{ width: '81%', height: '4ch', fontSize: 'large'}}>Submit</Button>
