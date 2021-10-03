@@ -24,6 +24,10 @@ import { updateProfile } from "src/mysql_db_api/members";
 import { editFb_user } from "src/mysql_db_api/fb_user";
 import { Attended_events, Resume } from "src/components/_dashboard/profile";
 import Label from "src/components/Label";
+import {
+  addnewusers,
+  getAllInpection,
+} from "src/mysql_db_api/hackathon_api.js";
 const useStyles = makeStyles(() => ({
   root: {
     flexWrap: "wrap",
@@ -67,6 +71,7 @@ export default function InputAdornments() {
   const [selected, setSelected] = useState(
     userProfile.committees ? userProfile.committees.split(", ") : []
   );
+  const [inspetion, setInpsection] = useState([]);
   const formSchema = Yup.object().shape({
     email: Yup.string()
       .email("Email must be a valid email address")
@@ -90,17 +95,8 @@ export default function InputAdornments() {
       last: userProfile.last_name,
       psid: userProfile.psid,
       email: userProfile.email,
-      // cougarEmail: userProfile.cougar_email,
-      // graduation_sem: userProfile.graduation_sem,
-      // graduation_year: userProfile.graduation_year,
-      // classification: userProfile.classification,
       age: parseInt(userProfile.age),
-      // point: parseInt(userProfile.point),
       displayName: userProfile.displayName,
-      // expiretime: userProfile.account_expiretime,
-      // linkedin_link: userProfile.linkedin_link,
-      // groupme_name: userProfile.groupme_name,
-      // updated_time: fDateTime(userProfile.updated_time),
     },
     validationSchema: formSchema,
     onSubmit: async (member) => {
@@ -124,6 +120,10 @@ export default function InputAdornments() {
       setLoading(false);
     },
   });
+  const onclickButtonSub = async () => {
+    const res = await getAllInpection();
+    setInpsection(res);
+  };
 
   const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } =
     formik;
@@ -140,16 +140,7 @@ export default function InputAdornments() {
           <h3 style={{ textAlign: "center", marginBottom: "20px" }}>
             Your profile
           </h3>
-          {/* <div>
-            Committees:
-            {userProfile.committees
-              ? userProfile.committees.split("; ").map((item) => (
-                  <Label variant="ghost" color="info" style={{ margin: 6 }}>
-                    {item}
-                  </Label>
-                ))
-              : " No committee"}
-          </div> */}
+
           <Grid cointainer spacing={3}>
             <Grid container item>
               <TextField
@@ -162,17 +153,6 @@ export default function InputAdornments() {
                 error={Boolean(touched.displayName && errors.displayName)}
                 variant="outlined"
               />
-
-              {/* <TextField
-                label="Point"
-                autoFocus
-                id="filled-start-adornment v"
-                type="number"
-                disabled={true}
-                className={clsx(classes.margin, classes.textField)}
-                {...getFieldProps("point")}
-                variant="outlined"
-              /> */}
             </Grid>
             <Grid container item>
               <TextField
@@ -189,20 +169,6 @@ export default function InputAdornments() {
                 className={clsx(classes.margin, classes.textField)}
                 error={Boolean(touched.email && errors.email)}
               />
-              {/* <TextField
-                required
-                autoFocus
-                margin="dense"
-                id="filled-number c"
-                label="Cougar Email"
-                type="text"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                {...getFieldProps("cougarEmail")}
-                className={clsx(classes.margin, classes.textField)}
-                error={Boolean(touched.cougarEmail && errors.cougarEmail)}
-              /> */}
             </Grid>
             <Grid item>
               <TextField
@@ -226,133 +192,8 @@ export default function InputAdornments() {
                 error={Boolean(touched.last && errors.last)}
                 variant="outlined"
               />
-
-              {/* <TextField
-                required
-                label="Student ID"
-                id="filled-start-adornment g"
-                className={clsx(classes.margin, classes.textField)}
-                {...getFieldProps("psid")}
-                error={Boolean(touched.psid && errors.psid)}
-                variant="outlined"
-              /> */}
-              {/* <FormControl className={clsx(classes.margin, classes.textField)}>
-                <InputLabel htmlFor="outlined-age-native-simple">
-                  Classification
-                </InputLabel>
-                <Select
-                  labelId="demo-dialog-select-label"
-                  id="demo-dialog-select h"
-                  {...getFieldProps("classification")}
-                  error={Boolean(
-                    touched.classification && errors.classification
-                  )}
-                  input={<Input />}
-                  style={{ paddingLeft: 13 }}
-                >
-                  <MenuItem value={"Freshman"}>Freshman</MenuItem>
-                  <MenuItem value={"Sophomore"}>Sophomore</MenuItem>
-                  <MenuItem value={"Junior"}>Junior</MenuItem>
-                  <MenuItem value={"Senior"}>Senior</MenuItem>
-                  <MenuItem value={"Masters"}>Master</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item container>
-              <FormControl className={clsx(classes.margin, classes.textField)}>
-                <InputLabel htmlFor="outlined-age-native-simple">
-                  Graduation semester
-                </InputLabel>
-                <Select
-                  labelId="demo-dialog-select-label"
-                  id="demo-dialog-select k"
-                  // value={gradation_sem}
-                  {...getFieldProps("graduation_sem")}
-                  error={Boolean(
-                    touched.graduation_sem && errors.graduation_sem
-                  )}
-                  input={<Input />}
-                  style={{ paddingLeft: 13 }}
-                >
-                  <MenuItem value={"Spring"}>Spring</MenuItem>
-                  <MenuItem value={"Fall"}>Fall</MenuItem>
-                  <MenuItem value={"Summer"}>Summer</MenuItem>
-                </Select>
-              </FormControl>
-              <FormControl className={clsx(classes.margin, classes.textField)}>
-                <InputLabel htmlFor="outlined-age-native-simple">
-                  Graduation year
-                </InputLabel>
-                <Select
-                  labelId="demo-dialog-select-label"
-                  id="demo-dialog-select m"
-                  {...getFieldProps("graduation_year")}
-                  input={<Input />}
-                  style={{ paddingLeft: 13 }}
-                >
-                  <MenuItem value={"2021"}>2021</MenuItem>
-                  <MenuItem value={"2022"}>2022</MenuItem>
-                  <MenuItem value={"2023"}>2023</MenuItem>
-                  <MenuItem value={"2024"}>2024</MenuItem>
-                  <MenuItem value={"2025"}>2025</MenuItem>
-                  <MenuItem value={"2026"}>2026</MenuItem>
-                  <MenuItem value={"2027"}>2027</MenuItem>
-                  <MenuItem value={"2028"}>2028</MenuItem>
-                  <MenuItem value={"2029"}>2029</MenuItem>
-                  <MenuItem value={"2030"}>2030</MenuItem>
-                </Select>
-              </FormControl> */}
-
-              {/* <TextField
-                autoFocus
-                label="Linkedin"
-                id="filled-start-adornment l"
-                className={clsx(classes.margin, classes.textField)}
-                {...getFieldProps("linkedin_link")}
-                variant="outlined"
-              />
-              <TextField
-                autoFocus
-                label="Groupme Name"
-                id="filled-start-adornment acount"
-                className={clsx(classes.margin, classes.textField)}
-                {...getFieldProps("groupme_name")}
-                variant="outlined"
-              />
-              <FormControl className={clsx(classes.margin, classes.textField)}>
-                <InputLabel htmlFor="outlined-age-native-simple">
-                  Account Will Expire After*
-                </InputLabel>
-                <Select
-                  labelId="demo-dialog-select-label"
-                  id="demo-dialog-select n"
-                  {...getFieldProps("expiretime")}
-                  disabled
-                  input={<Input />}
-                  style={{ paddingLeft: 13 }}
-                >
-                  <MenuItem value={"Fall 2021"}>Fall 2021</MenuItem>
-                  <MenuItem value={"Spring 2022"}>Spring 2022</MenuItem>
-                  <MenuItem value={"Fall 2022"}>Fall 2022</MenuItem>
-                  <MenuItem value={"Spring 2023"}>Spring 2023</MenuItem>
-                  <MenuItem value={"Fall 2024"}>Fall 2024</MenuItem>
-                  <MenuItem value={"Spring 2024"}>Spring 2024</MenuItem>
-                  <MenuItem value={"Fall 2025"}>Fall 2025</MenuItem>
-                  <MenuItem value={"Spring 2025"}>Spring 2025</MenuItem>
-                </Select>
-              </FormControl>
-              <TextField
-                autoFocus
-                label="Profile Updated time"
-                id="filled-start-adornment-updated-time"
-                className={clsx(classes.margin, classes.textField)}
-                {...getFieldProps("updated_time")}
-                variant="outlined"
-                disabled
-              /> */}
             </Grid>
 
-            {/* <CommitteeField selected={selected} setSelected={setSelected} /> */}
             {/* <Resume /> */}
           </Grid>
 
@@ -365,7 +206,6 @@ export default function InputAdornments() {
           </LoadingButton>
         </Form>
       </FormikProvider>
-      {/* <Attended_events /> */}
     </Container>
   );
 }
