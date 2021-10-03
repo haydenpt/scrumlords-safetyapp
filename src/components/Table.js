@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import { fDateTime } from "src/utils/formatTime.js";
 import Label from "src/components/Label.js";
-
+import { MemberMoreDetails } from "./_dashboard/members";
 // components
 import Scrollbar from "src/components/Scrollbar";
 import SearchNotFound from "src/components/SearchNotFound";
@@ -54,10 +54,10 @@ function applySortFilter(array, comparator, query) {
     return filter(
       array,
       (_user) =>
-        _user.first_name.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
-        _user.last_name.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
+        _user.current_job.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
+        _user.phone_number.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
         _user.email.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
-        _user.psid.toLowerCase().indexOf(query.toLowerCase()) !== -1
+        _user.witness.toLowerCase().indexOf(query.toLowerCase()) !== -1
     );
   }
   return stabilizedThis.map((el) => el[0]);
@@ -82,7 +82,7 @@ export default function GeneralTable({ files, TABLE_HEAD }) {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = files.map((n) => n.pro_id);
+      const newSelecteds = files.map((n) => n.id);
       setSelected(newSelecteds);
       return;
     }
@@ -157,12 +157,12 @@ export default function GeneralTable({ files, TABLE_HEAD }) {
                 {filteredUsers
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => {
-                    const isItemSelected = selected.indexOf(row.pro_id) !== -1;
+                    const isItemSelected = selected.indexOf(row.id) !== -1;
 
                     return (
                       <TableRow
                         hover
-                        key={row.pro_id}
+                        key={row.id}
                         tabIndex={-1}
                         role="checkbox"
                         selected={isItemSelected}
@@ -171,31 +171,50 @@ export default function GeneralTable({ files, TABLE_HEAD }) {
                         <TableCell padding="checkbox">
                           <Checkbox
                             checked={isItemSelected}
-                            onChange={(event) => handleClick(event, row.pro_id)}
+                            onChange={(event) => handleClick(event, row.id)}
                           />
                         </TableCell>
 
                         <TableCell align="left" className={classes.cell}>
-                          {row.first_name}
+                          {row.current_job}
                         </TableCell>
                         <TableCell align="left" className={classes.cell}>
-                          {row.last_name}
+                          {row.phone_number}
                         </TableCell>
                         <TableCell align="left" className={classes.cell}>
                           {row.email}
                         </TableCell>
                         <TableCell align="left" className={classes.cell}>
-                          {row.psid}
+                          {row.witness}
                         </TableCell>
                         <TableCell align="left">
                           <Label variant="ghost" color="success">
-                            {row.point}
+                            {row.phone_number_witness}
                           </Label>
                         </TableCell>
-
                         <TableCell align="left">
-                          {fDateTime(row.register_time)}
+                          <Label variant="ghost" color="success">
+                            {row.incident_date}
+                          </Label>
                         </TableCell>
+                        <TableCell align="left">
+                          <Label variant="ghost" color="success">
+                            {row.incident_date}
+                          </Label>
+                        </TableCell>
+                        {/* <TableCell align="left">
+                          {fDateTime(row.register_time)}
+                        </TableCell> */}
+
+                        {/* <TableCell align="right">
+                          <MemberMoreDetails
+                            // setChosenItem={setChosenItem}
+                            chosenItem={row}
+                            setMembers={setMembers}
+                            members={files}
+                            update_all_members_func={getAllMembers}
+                          />
+                        </TableCell> */}
                       </TableRow>
                     );
                   })}
