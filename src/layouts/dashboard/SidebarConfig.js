@@ -18,23 +18,23 @@ export const sidebarConfig = [
     icon: getIcon(calendar2EventFill),
     isAdmin: false,
   },
+  // {
+  //   title: "Incident Report",
+  //   path: "/dashboard/incident",
+  //   icon: getIcon(pieChart2Fill),
+  //   isAdmin: false,
+  // },
+
   {
-    title: "Incident Report",
-    path: "/dashboard/incident",
-    icon: getIcon(pieChart2Fill),
+    title: "Incident home page",
+    path: "/dashboard/incident_home",
     isAdmin: false,
+    icon: getIcon(pieChart2Fill),
   },
 
   {
     title: "Profile",
     path: "/dashboard/profile",
-    isAdmin: false,
-    icon: getIcon(personAddFill),
-  },
-
-  {
-    title: "Incident home page",
-    path: "/dashboard/incident_home",
     isAdmin: false,
     icon: getIcon(personAddFill),
   },
