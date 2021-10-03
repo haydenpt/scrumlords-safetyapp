@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
   const [mess, setMess] = useState("");
   const [isMess, setIsMess] = useState(false);
   const [messType, setMessType] = useState("");
-  const [isResume, setIsResume] = useState(false);
+  // const [isResume, setIsResume] = useState(false);
 
   function user_login(email, pass) {
     return firebase.auth().signInWithEmailAndPassword(email, pass);
@@ -53,32 +53,27 @@ export function AuthProvider({ children }) {
   }
   async function updateUserProfileInFrontend(user) {
     const res = await getOneMemberByMail(user.email);
+    console.log("adhfkjdhkjhfkjdn", res.data);
     if (res.data) {
       setUserProfile({
         uid: user.uid,
         displayName: user.displayName,
         email: user.email,
 
-        first_name: res.data.first_name,
-        last_name: res.data.last_name,
-        cougar_email: res.data.cougar_email,
-        psid: res.data.psid,
-        graduation_sem: res.data.graduation_sem,
-        graduation_year: res.data.graduation_year,
-        age: res.data.age,
-        point: res.data.point,
-        classification: res.data.classification,
-        account_expiretime: res.data.account_expiretime,
+        first_name: res.data.first,
+        last_name: res.data.last,
+        // point: res.data.point,
+        // classification: res.data.classification,
+        // account_expiretime: res.data.account_expiretime,
         updated_time: res.data.updated_time,
         created_time: res.data.created_time,
-        isResume: res.data.isResume,
-        linkedin_link: res.data.linkedin_link,
-        groupme_name: res.data.groupme_name,
+        // isResume: res.data.isResume,
+        // linkedin_link: res.data.linkedin_link,
+        // groupme_name: res.data.groupme_name,
         is_admin: res.data.is_admin,
-        committees: res.data.committees,
-        updated_time: res.data.updated_time,
+        // committees: res.data.committees,
       });
-      setIsResume(res.data.isResume);
+      // setIsResume(res.data.isResume);
     }
   }
   function displayErrMess(mess, messType) {
@@ -121,8 +116,8 @@ export function AuthProvider({ children }) {
     setLoading,
     displayErrMess,
     waitUser,
-    isResume,
-    setIsResume,
+    // isResume,
+    // setIsResume,
   };
 
   return (

@@ -21,7 +21,6 @@ import { useFormik, Form, FormikProvider } from "formik";
 import * as Yup from "yup";
 import { LoadingButton } from "@material-ui/lab";
 import { editFb_user } from "src/mysql_db_api/fb_user";
-import { CommitteeField } from "../profile";
 
 export default function EditMemberModal({
   open,
@@ -455,12 +454,6 @@ export default function EditMemberModal({
                   </FormControl>
                 </Grid>
                 {console.log("viet", { ...getFieldProps("committees") })}
-                <Grid item xs={12}>
-                  <CommitteeField
-                    selected={selected}
-                    setSelected={setSelected}
-                  />
-                </Grid>
               </Grid>
             </Form>
           </FormikProvider>

@@ -63,6 +63,7 @@ export default function InputAdornments() {
     currentUser,
     updateUserProfileInFrontend,
   } = useAuth();
+  console.log("viet", userProfile);
   const [selected, setSelected] = useState(
     userProfile.committees ? userProfile.committees.split(", ") : []
   );
@@ -76,12 +77,12 @@ export default function InputAdornments() {
     displayName: Yup.string().required("First Name is required"),
     first: Yup.string().required("First Name is required"),
     last: Yup.string().required("Last Name is required"),
-    psid: Yup.string().required("PSID is required"),
-    graduation_sem: Yup.string(),
-    graduation_year: Yup.string(),
-    classification: Yup.string(),
-    point: Yup.string(),
-    account_expiretime: Yup.string(),
+    // psid: Yup.string().required("PSID is required"),
+    // graduation_sem: Yup.string(),
+    // graduation_year: Yup.string(),
+    // classification: Yup.string(),
+    // point: Yup.string(),
+    // account_expiretime: Yup.string(),
   });
   const formik = useFormik({
     initialValues: {
@@ -89,17 +90,17 @@ export default function InputAdornments() {
       last: userProfile.last_name,
       psid: userProfile.psid,
       email: userProfile.email,
-      cougarEmail: userProfile.cougar_email,
-      graduation_sem: userProfile.graduation_sem,
-      graduation_year: userProfile.graduation_year,
-      classification: userProfile.classification,
+      // cougarEmail: userProfile.cougar_email,
+      // graduation_sem: userProfile.graduation_sem,
+      // graduation_year: userProfile.graduation_year,
+      // classification: userProfile.classification,
       age: parseInt(userProfile.age),
       // point: parseInt(userProfile.point),
       displayName: userProfile.displayName,
-      expiretime: userProfile.account_expiretime,
-      linkedin_link: userProfile.linkedin_link,
-      groupme_name: userProfile.groupme_name,
-      updated_time: fDateTime(userProfile.updated_time),
+      // expiretime: userProfile.account_expiretime,
+      // linkedin_link: userProfile.linkedin_link,
+      // groupme_name: userProfile.groupme_name,
+      // updated_time: fDateTime(userProfile.updated_time),
     },
     validationSchema: formSchema,
     onSubmit: async (member) => {
@@ -352,7 +353,7 @@ export default function InputAdornments() {
             </Grid>
 
             {/* <CommitteeField selected={selected} setSelected={setSelected} /> */}
-            <Resume />
+            {/* <Resume /> */}
           </Grid>
 
           <LoadingButton
